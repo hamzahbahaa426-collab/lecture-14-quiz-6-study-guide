@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f2">
+  <meta name="description" content="A friendly, step-by-step guide to every idea in Lecture 14 Quiz 6 review, with interactive examples and fresh practice.">
+  <title>Number Sense — Lecture 14, Quiz 6</title>
+  <style>
+    :root {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #202b42;
+      background: #f5f6f2;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      --ink: #202b42;
+      --muted: #78839a;
+      --line: #e8eaf0;
+      --paper: #fff;
+      --canvas: #f5f6f2;
+      --blue: #4665d7;
+      --blue-dark: #334db2;
+      --blue-light: #eef1ff;
+      --green: #2c8a67;
+      --green-light: #e9f6ef;
+      --amber: #bd7d28;
+      --amber-light: #fff3df;
+      --pink-light: #fff0ef;
+      --shadow: 0 16px 42px rgba(34, 48, 85, .065);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { min-width: 320px; min-height: 100vh; margin: 0; background: var(--canvas); font-size: 14px; line-height: 1.65; }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #94a5ff; outline-offset: 3px; }
+    a { color: inherit; }
+    .shell { display: grid; min-height: 100vh; grid-template-columns: 248px minmax(0, 1fr); }
+    .sidebar { position: sticky; top: 0; display: flex; height: 100vh; flex-direction: column; padding: 27px 17px 18px; border-right: 1px solid var(--line); background: #fbfcfa; }
+    .brand { display: flex; align-items: center; gap: 11px; margin: 0 8px 36px; font-size: 15px; font-weight: 780; letter-spacing: -.035em; }
+    .brand-icon { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 12px; color: white; background: var(--blue); box-shadow: 0 6px 13px #4665d733; font-size: 20px; }
+    .nav-label { margin: 0 11px 8px; color: #a0a8b8; font-size: 10px; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
+    .nav-list { display: grid; gap: 4px; margin: 0 0 27px; padding: 0; list-style: none; }
+    .nav-button { display: flex; width: 100%; align-items: center; gap: 11px; padding: 10px 11px; border: 0; border-radius: 11px; color: #657087; background: transparent; text-align: left; cursor: pointer; transition: background .16s, color .16s, transform .16s; }
+    .nav-button:hover { color: var(--blue-dark); background: #f2f4fb; }
+    .nav-button[aria-current="page"] { color: var(--blue-dark); background: var(--blue-light); font-weight: 700; }
+    .nav-icon { display: grid; width: 20px; place-items: center; font-size: 16px; }
+    .nav-number { margin-left: auto; color: #a0a8b8; font-size: 11px; }
+    .sidebar-spacer { flex: 1; }
+    .progress-card { padding: 15px 14px; border: 1px solid #e8eaf0; border-radius: 14px; background: white; }
+    .progress-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 5px; font-size: 12px; font-weight: 720; }
+    .progress-count { color: var(--blue); }
+    .progress-copy { color: var(--muted); font-size: 11px; }
+    .progress-track { height: 5px; margin-top: 11px; overflow: hidden; border-radius: 5px; background: #edf0f5; }
+    .progress-fill { width: 0; height: 100%; border-radius: inherit; background: var(--blue); transition: width .3s ease; }
+    .sidebar-note { margin: 14px 5px 0; color: #a0a8b8; font-size: 10px; text-align: center; }
+    .main { width: 100%; max-width: 1280px; min-width: 0; margin: 0 auto; padding: 0 47px 70px; }
+    .topbar { position: sticky; z-index: 3; top: 0; display: flex; min-height: 70px; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid #e8eaf0c9; background: #f5f6f2ee; backdrop-filter: blur(14px); }
+    .crumb { color: var(--muted); font-size: 12px; }
+    .crumb strong { color: var(--ink); font-weight: 650; }
+    .top-actions { display: flex; align-items: center; gap: 12px; }
+    .search { display: flex; width: 225px; align-items: center; gap: 8px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); background: white; }
+    .search svg { width: 15px; flex: 0 0 auto; }
+    .search input { width: 100%; min-width: 0; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 12px; }
+    .search input::placeholder { color: #9da6b6; }
+    .streak { display: inline-flex; align-items: center; gap: 7px; color: #606b82; font-size: 12px; white-space: nowrap; }
+    .streak strong { color: var(--amber); }
+    .content { max-width: 980px; margin: 0 auto; }
+    .hero { position: relative; display: grid; min-height: 231px; grid-template-columns: minmax(0, 1fr) 230px; align-items: center; gap: 26px; margin: 30px 0 23px; padding: 31px 36px; overflow: hidden; border-radius: 22px; color: #fff; background: linear-gradient(116deg, #334cae 0%, #4968d4 57%, #7188e6 100%); box-shadow: 0 17px 36px #405bc02b; }
+    .hero::after { position: absolute; top: -110px; right: 132px; width: 275px; height: 275px; border: 1px solid #ffffff20; border-radius: 50%; content: ""; }
+    .hero::before { position: absolute; right: -79px; bottom: -180px; width: 345px; height: 345px; border: 1px solid #ffffff1c; border-radius: 50%; content: ""; }
+    .hero-copy { position: relative; z-index: 1; }
+    .hero-kicker { color: #d3dcff; font-size: 10px; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+    .hero h1 { max-width: 520px; margin: 8px 0 9px; font-size: clamp(26px, 3.6vw, 37px); font-weight: 730; letter-spacing: -.055em; line-height: 1.13; }
+    .hero p { max-width: 510px; margin: 0; color: #e0e6ff; font-size: 13px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 9px 14px; border: 0; border-radius: 9px; color: #344cb1; background: #fff; font-size: 12px; font-weight: 740; text-decoration: none; cursor: pointer; transition: transform .18s, box-shadow .18s; }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 17px #192d7540; }
+    .hero-graphic { position: relative; z-index: 1; display: grid; min-height: 158px; place-items: center; }
+    .orbit { position: relative; display: grid; width: 158px; height: 158px; place-items: center; border: 1px solid #ffffff56; border-radius: 50%; background: #ffffff10; box-shadow: 0 0 0 14px #ffffff0a, 0 0 0 28px #ffffff08; }
+    .orbit::before, .orbit::after { position: absolute; width: 11px; height: 11px; border-radius: 50%; background: #f4c679; box-shadow: 0 0 18px #ffdc97aa; content: ""; }
+    .orbit::before { top: 12px; right: 24px; }
+    .orbit::after { bottom: 17px; left: 21px; width: 7px; height: 7px; background: #a9f0d7; }
+    .orbit-inner { display: grid; width: 105px; height: 105px; place-items: center; border: 1px solid #ffffff55; border-radius: 50%; color: #fff; background: #ffffff14; font-size: 25px; font-weight: 700; letter-spacing: -.06em; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin: 32px 0 14px; }
+    .section-head h2 { margin: 2px 0 0; font-size: 18px; font-weight: 730; letter-spacing: -.04em; line-height: 1.35; }
+    .section-head p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+    .section-kicker { color: var(--blue); font-size: 10px; font-weight: 760; letter-spacing: .13em; text-transform: uppercase; }
+    .text-link { padding: 5px 0; border: 0; color: var(--blue); background: transparent; font-size: 11px; font-weight: 700; cursor: pointer; }
+    .text-link:hover { color: var(--blue-dark); text-decoration: underline; }
+    .concept-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+    .concept-card { position: relative; display: flex; min-height: 146px; flex-direction: column; padding: 17px 18px 15px; border: 1px solid var(--line); border-radius: 15px; color: inherit; background: var(--paper); text-align: left; text-decoration: none; cursor: pointer; box-shadow: 0 4px 14px #27334e06; transition: transform .18s ease, box-shadow .18s ease, border-color .18s; }
+    .concept-card:hover { transform: translateY(-2px); border-color: #d5daf2; box-shadow: var(--shadow); }
+    .concept-card.done::after { position: absolute; top: 15px; right: 16px; color: var(--green); content: "✓"; font-size: 13px; font-weight: 800; }
+    .concept-icon { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 10px; font-size: 17px; }
+    .tone-blue { color: var(--blue); background: var(--blue-light); }
+    .tone-green { color: var(--green); background: var(--green-light); }
+    .tone-amber { color: var(--amber); background: var(--amber-light); }
+    .tone-pink { color: #b75256; background: var(--pink-light); }
+    .concept-card h3 { margin: 11px 0 4px; font-size: 14px; font-weight: 730; letter-spacing: -.02em; }
+    .concept-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .card-meta { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 12px; color: #919bae; font-size: 10px; }
+    .card-meta strong { color: var(--blue); font-size: 11px; }
+    .callout { display: flex; align-items: flex-start; gap: 12px; margin-top: 18px; padding: 15px 17px; border: 1px solid #f1e7ce; border-radius: 13px; background: #fffaf0; }
+    .callout-icon { font-size: 16px; }
+    .callout p { margin: 0; color: #76664a; font-size: 11px; }
+    .callout strong { color: #67512d; }
+    .lesson-layout { display: grid; grid-template-columns: minmax(0, 1fr) 230px; align-items: start; gap: 23px; margin-top: 27px; }
+    .lesson-title { margin: 6px 0 8px; font-size: clamp(25px, 3.5vw, 34px); font-weight: 740; letter-spacing: -.055em; line-height: 1.16; }
+    .lesson-intro { max-width: 660px; margin: 0 0 21px; color: #69758c; font-size: 13px; }
+    .lesson-aside { position: sticky; top: 91px; }
+    .aside-card { margin-bottom: 12px; padding: 15px; border: 1px solid var(--line); border-radius: 14px; background: white; }
+    .aside-card h3 { margin: 0 0 8px; font-size: 11px; }
+    .aside-card p { margin: 0; color: var(--muted); font-size: 11px; }
+    .aside-card .aside-formula { padding: 9px 10px; border-radius: 9px; color: #354dba; background: var(--blue-light); font-size: 13px; font-weight: 700; text-align: center; }
+    .lesson-block { margin: 13px 0; padding: 20px 21px; border: 1px solid var(--line); border-radius: 16px; background: white; }
+    .lesson-block h2 { margin: 0 0 8px; font-size: 15px; letter-spacing: -.025em; }
+    .lesson-block p { margin: 7px 0; color: #5e6a80; font-size: 12px; }
+    .lesson-block strong { color: #293651; }
+    .lesson-block ul { margin: 9px 0 4px; padding-left: 19px; color: #5e6a80; font-size: 12px; }
+    .lesson-block li { margin: 5px 0; }
+    .math { display: block; margin: 11px 0; padding: 12px 14px; overflow-wrap: anywhere; border: 1px solid #e7eaff; border-radius: 10px; color: #344cae; background: #f4f6ff; font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 13px; line-height: 1.8; }
+    .math.compact { display: inline-block; margin: 0; padding: 3px 7px; font-size: 12px; line-height: 1.5; }
+    .plain-note { padding: 11px 13px; border-left: 3px solid #efb553; border-radius: 0 9px 9px 0; color: #726348; background: #fff9eb; font-size: 11px; }
+    .example-label { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 7px; color: var(--green); font-size: 10px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+    .step-list { display: grid; gap: 8px; margin: 12px 0 0; padding: 0; list-style: none; counter-reset: worked; }
+    .step-list li { position: relative; min-height: 38px; padding: 2px 0 2px 37px; color: #5e6a80; font-size: 12px; counter-increment: worked; }
+    .step-list li::before { position: absolute; top: 0; left: 0; display: grid; width: 25px; height: 25px; place-items: center; border-radius: 50%; color: var(--blue); background: var(--blue-light); content: counter(worked); font-size: 11px; font-weight: 750; }
+    .practice-toolbar { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0 14px; }
+    .filter-chip { padding: 7px 12px; border: 1px solid var(--line); border-radius: 99px; color: #6c778d; background: white; font-size: 11px; cursor: pointer; }
+    .filter-chip[aria-pressed="true"] { border-color: #d9e0ff; color: var(--blue-dark); background: var(--blue-light); font-weight: 700; }
+    .question-card { margin: 11px 0; padding: 19px 20px; border: 1px solid var(--line); border-radius: 15px; background: white; }
+    .question-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+    .question-type { color: var(--blue); font-size: 10px; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+    .question-difficulty { color: #929caf; font-size: 10px; }
+    .question-card h3 { margin: 0; font-size: 14px; font-weight: 650; line-height: 1.6; }
+    .question-hint { margin: 8px 0 0; color: var(--muted); font-size: 11px; }
+    .answer-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .answer-row input { flex: 1 1 220px; min-width: 100px; padding: 9px 11px; border: 1px solid #dfe3ed; border-radius: 9px; color: var(--ink); background: #fff; font-size: 12px; }
+    .primary-button { padding: 9px 13px; border: 0; border-radius: 9px; color: white; background: var(--blue); font-size: 11px; font-weight: 720; cursor: pointer; }
+    .primary-button:hover { background: var(--blue-dark); }
+    .secondary-button { padding: 8px 10px; border: 1px solid var(--line); border-radius: 9px; color: #637087; background: white; font-size: 11px; cursor: pointer; }
+    .secondary-button:hover { border-color: #cbd3f4; color: var(--blue-dark); }
+    .answer-feedback { margin: 10px 0 0; font-size: 11px; }
+    .answer-feedback.correct { color: var(--green); }
+    .answer-feedback.try-again { color: #a95f36; }
+    .solution { margin-top: 12px; padding: 13px 14px; border-radius: 10px; background: #f7f8fb; }
+    .solution[hidden] { display: none; }
+    .solution h4 { margin: 0 0 7px; color: #36435d; font-size: 11px; }
+    .solution ol { margin: 0; padding-left: 18px; color: #647087; font-size: 11px; }
+    .solution li { padding: 2px 0; }
+    .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .tool-card { padding: 18px; border: 1px solid var(--line); border-radius: 15px; background: white; }
+    .tool-card h2 { margin: 0 0 4px; font-size: 14px; }
+    .tool-card > p { margin: 0 0 13px; color: var(--muted); font-size: 11px; }
+    .tool-form { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
+    .tool-form label { display: flex; min-width: 74px; flex: 1; flex-direction: column; gap: 4px; color: var(--muted); font-size: 10px; }
+    .tool-form input, .tool-form select { width: 100%; min-width: 0; padding: 8px 9px; border: 1px solid #dfe3ed; border-radius: 8px; color: var(--ink); background: white; font-size: 12px; }
+    .tool-result { min-height: 24px; margin-top: 11px; color: #4656a0; font-size: 11px; line-height: 1.65; }
+    .tool-result:empty { display: none; }
+    .tool-result strong { color: #344cae; }
+    .tool-result .math { margin: 7px 0 0; font-size: 11px; }
+    .empty-state { padding: 27px; border: 1px dashed #dfe3ed; border-radius: 13px; color: var(--muted); background: white; text-align: center; }
+    .footer { margin-top: 40px; padding-top: 17px; border-top: 1px solid var(--line); color: #9aa3b3; font-size: 10px; text-align: center; }
+    .footer strong { color: #78839a; font-weight: 650; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; clip-path: inset(50%); }
+
+    @media (max-width: 950px) {
+      .main { padding-right: 28px; padding-left: 28px; }
+      .hero { grid-template-columns: minmax(0, 1fr) 170px; padding-right: 25px; padding-left: 27px; }
+      .orbit { width: 130px; height: 130px; }
+      .orbit-inner { width: 85px; height: 85px; }
+    }
+    @media (max-width: 740px) {
+      .shell { display: block; }
+      .sidebar { position: sticky; z-index: 5; top: 0; width: 100%; height: auto; flex-direction: row; align-items: center; gap: 8px; padding: 9px 12px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .brand { flex: 0 0 auto; gap: 8px; margin: 0 8px 0 0; font-size: 13px; }
+      .brand-icon { width: 31px; height: 31px; font-size: 17px; }
+      .nav-label, .sidebar-spacer, .progress-card, .sidebar-note { display: none; }
+      .nav-list { display: flex; flex: 1; justify-content: flex-end; gap: 3px; margin: 0; }
+      .nav-button { width: auto; justify-content: center; gap: 5px; padding: 7px 9px; font-size: 10px; white-space: nowrap; }
+      .nav-icon { width: auto; font-size: 14px; }
+      .nav-number { display: none; }
+      .sidebar nav[aria-label="Lecture topics"] { display: none; }
+      .main { padding: 0 21px 44px; }
+      .topbar { top: 49px; min-height: 54px; }
+      .search { width: 185px; }
+      .lesson-layout { grid-template-columns: minmax(0,1fr); }
+      .lesson-aside { position: static; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; order: -1; }
+      .aside-card { margin-bottom: 0; }
+    }
+    @media (max-width: 520px) {
+      .sidebar { gap: 3px; padding-right: 7px; padding-left: 8px; }
+      .brand { gap: 6px; margin-right: 2px; font-size: 11px; }
+      .brand-icon { width: 28px; height: 28px; }
+      .nav-list { gap: 1px; }
+      .nav-button { gap: 4px; padding: 6px 6px; font-size: 9px; }
+      .nav-icon { font-size: 12px; }
+      .main { padding-right: 14px; padding-left: 14px; }
+      .topbar { top: 45px; min-height: 50px; }
+      .crumb { display: none; }
+      .top-actions { width: 100%; justify-content: space-between; }
+      .search { width: min(60vw, 230px); }
+      .streak { font-size: 10px; }
+      .hero { display: block; min-height: auto; margin: 18px 0; padding: 24px 21px; }
+      .hero h1 { max-width: 340px; font-size: 29px; }
+      .hero p { max-width: 360px; }
+      .hero-graphic { position: absolute; right: -17px; bottom: -20px; opacity: .31; }
+      .orbit { width: 116px; height: 116px; }
+      .orbit-inner { width: 76px; height: 76px; }
+      .section-head { margin-top: 25px; }
+      .section-head h2 { font-size: 16px; }
+      .concept-grid, .tool-grid { grid-template-columns: 1fr; }
+      .concept-card { min-height: 135px; }
+      .lesson-block, .question-card { padding: 16px; }
+      .lesson-aside { grid-template-columns: 1fr; }
+      .answer-row input { flex-basis: 100%; }
+    }
+    @media (max-width: 400px) {
+      .brand > span:last-child { display: none; }
+      .nav-list { justify-content: space-between; }
+      .nav-button { width: 34px; min-height: 34px; flex: 0 0 auto; justify-content: center; padding: 5px; font-size: 0; }
+      .nav-icon { font-size: 15px; }
+      .search { width: 52vw; }
+      .streak span:last-child { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Study navigation">
+      <a class="brand" href="#" data-page="home" aria-label="Number Sense home">
+        <span class="brand-icon" aria-hidden="true">∑</span>
+        <span>Number Sense</span>
+      </a>
+      <p class="nav-label">Your study space</p>
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><button class="nav-button" data-page="home" aria-label="Overview" aria-current="page"><span class="nav-icon" aria-hidden="true">⌂</span>Overview</button></li>
+          <li><button class="nav-button" data-page="learn" aria-label="Lessons"><span class="nav-icon" aria-hidden="true">▤</span>Lessons<span class="nav-number">04</span></button></li>
+          <li><button class="nav-button" data-page="practice" aria-label="Practice"><span class="nav-icon" aria-hidden="true">✎</span>Practice</button></li>
+          <li><button class="nav-button" data-page="tools" aria-label="Math tools"><span class="nav-icon" aria-hidden="true">⌘</span>Math tools</button></li>
+        </ul>
+      </nav>
+      <p class="nav-label">Lecture 14 · Quiz 6</p>
+      <nav aria-label="Lecture topics">
+        <ul class="nav-list">
+          <li><button class="nav-button" data-lesson="remainders"><span class="nav-icon" aria-hidden="true">↻</span>Remainders &amp; cycles</button></li>
+          <li><button class="nav-button" data-lesson="primes"><span class="nav-icon" aria-hidden="true">✦</span>Prime numbers</button></li>
+          <li><button class="nav-button" data-lesson="floor"><span class="nav-icon" aria-hidden="true">⌊x⌋</span>Floor function</button></li>
+          <li><button class="nav-button" data-lesson="proofs"><span class="nav-icon" aria-hidden="true">∴</span>Proof toolkit</button></li>
+        </ul>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="progress-card">
+        <div class="progress-top"><span>Your progress</span><span class="progress-count" id="progress-count">0 / 4</span></div>
+        <div class="progress-copy" id="progress-copy">A little practice goes a long way.</div>
+        <div class="progress-track" role="progressbar" aria-label="Lessons completed" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" id="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
+      <p class="sidebar-note">Made for curious minds · Lecture 14</p>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb"><span>My learning</span> &nbsp;/&nbsp; <strong id="breadcrumb">Overview</strong></div>
+        <div class="top-actions">
+          <label class="search" for="site-search">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.7" cy="8.7" r="5.8" stroke="currentColor" stroke-width="1.5"/><path d="m13 13 3.8 3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <input id="site-search" type="search" placeholder="Find a topic..." autocomplete="off">
+          </label>
+          <div class="streak" aria-label="Study reminder"><span aria-hidden="true">✦</span><span>One idea at a time</span></div>
+        </div>
+      </header>
+      <div class="content" id="content" tabindex="-1"></div>
+      <footer class="footer"><strong>Lecture 14 · Review for Quiz 6</strong> &nbsp;·&nbsp; Built for understanding, not memorizing.</footer>
+    </main>
+  </div>
+
+  <script>
+    const lessons = [
+      {
+        id: "remainders", icon: "↻", tone: "blue", name: "Remainders & cycles", short: "Why clocks and weekdays wrap around—and how division tells us exactly where we land.",
+        time: "5 min", formula: "a = bq + r", keywords: "remainder division algorithm modulo modular arithmetic quotient weekday cycle",
+        intro: "Whenever a count repeats in a cycle—weekdays, clock hours, or rotating turns—the remainder tells you where you land after all complete cycles.",
+        sections: [
+          { title: "1. Division with a remainder", body: `<p>For any integer <strong>a</strong> and a positive integer <strong>b</strong>, divide <em>a</em> by <em>b</em>. The <strong>quotient</strong> q counts complete groups; the <strong>remainder</strong> r is what is left over.</p><span class="math">a = bq + r, &nbsp; 0 ≤ r &lt; b</span><p>The remainder must be at least zero and smaller than the divisor. For example, 30 days are 4 complete weeks and 2 extra days: <strong>30 = 7 × 4 + 2</strong>.</p>` },
+          { title: "2. The remainder is the position in a cycle", body: `<p>There are 7 days in one week, so counting forward 7 days brings you back to the same weekday. Extra complete weeks do not change the answer; only the leftover days do.</p><span class="math">30 ÷ 7 = 4 remainder 2<br>Monday + 2 days = Wednesday</span><p>We can say <strong>30 is congruent to 2 modulo 7</strong>, written 30 ≡ 2 (mod 7). The notation means “these numbers leave the same remainder when divided by 7.”</p>` },
+          { title: "3. A reliable solve-it-every-time method", body: `<ol class="step-list"><li>Write down the cycle length. For a weekday, it is 7.</li><li>Divide the number of steps by the cycle length: <strong>steps = cycle × complete cycles + remainder</strong>.</li><li>Move forward only by the remainder. For days after Monday, count 0 = Monday, 1 = Tuesday, 2 = Wednesday, and so on.</li><li>Check the wording: “after 0 days” means the starting day, not the next one.</li></ol><p>For a clock, use the number of positions in that clock cycle instead. Always match the divisor to the cycle in the question.</p>` },
+          { title: "Worked example · meet again in 30 days", body: `<div class="example-label">Step-by-step example</div><p>A friend says on Monday that you will meet again in 30 days. What weekday will it be?</p><ol class="step-list"><li>The weekday cycle has 7 days, so divide 30 by 7.</li><li>Since 7 × 4 = 28, the remainder is 30 − 28 = 2.</li><li>Four full weeks bring us back to Monday; 2 more days bring us to Wednesday.</li></ol><span class="math">30 = 7 × 4 + 2 &nbsp; ⟹ &nbsp; Wednesday</span>` },
+          { title: "Words to know", body: `<ul><li><strong>Divisor:</strong> the number you divide by (7 days per week).</li><li><strong>Quotient:</strong> the count of whole groups (4 full weeks).</li><li><strong>Remainder:</strong> what is left after those groups (2 days).</li><li><strong>Modulo / mod:</strong> a way to focus on the remainder, and the cycle it describes.</li></ul>` }
+        ]
+      },
+      {
+        id: "primes", icon: "✦", tone: "green", name: "Prime numbers", short: "Sort possible primes into the six remainder classes and prove why only two can work.",
+        time: "6 min", formula: "p = 6q ± 1", keywords: "prime composite factor divisibility six q 6q+1 6q-1 prime theorem proof",
+        intro: "A prime number greater than 3 has to be one more or one less than a multiple of 6. This is a helpful filter—not a certificate that a number is prime.",
+        sections: [
+          { title: "1. Group integers by their remainder after division by 6", body: `<p>Every integer leaves one of six possible remainders when divided by 6. Therefore every integer has exactly one of these forms:</p><span class="math">6q, &nbsp; 6q + 1, &nbsp; 6q + 2, &nbsp; 6q + 3, &nbsp; 6q + 4, &nbsp; 6q + 5</span><p>Here q is an integer. The number 6q is divisible by 6; 6q + 2 and 6q + 4 are even; and 6q + 3 is divisible by 3.</p>` },
+          { title: "2. Why a prime above 3 must be 6q ± 1", body: `<p>A <strong>prime</strong> is a whole number greater than 1 whose only positive factors are 1 and itself. If a number greater than 3 were divisible by 2 or by 3, it would have a factor other than 1 and itself, so it would be <strong>composite</strong> (not prime).</p><ol class="step-list"><li>Start with any prime p &gt; 3. Division by 6 puts it into one of the six forms.</li><li>The forms 6q, 6q+2, and 6q+4 are divisible by 2. They cannot be this prime.</li><li>The form 6q+3 is divisible by 3. It cannot be this prime either.</li><li>Only 6q+1 and 6q+5 remain. Since 6q+5 = 6(q+1)−1, these are exactly 6q ± 1.</li></ol><span class="math">p &gt; 3 and p prime &nbsp; ⟹ &nbsp; p = 6q + 1 or 6q − 1</span>` },
+          { title: "3. Important: the reverse is not true", body: `<p>The theorem says primes greater than 3 <strong>must</strong> have the form 6q ± 1. It does <strong>not</strong> say every number of that form is prime.</p><span class="math">25 = 6 × 4 + 1 = 5 × 5<br>35 = 6 × 6 − 1 = 5 × 7</span><p>Both examples fit 6q ± 1 and are composite. To establish that a candidate is prime, you still need to check its possible factors; this shortcut only rules out even numbers and multiples of 3.</p>` },
+          { title: "Worked example · check the theorem carefully", body: `<div class="example-label">Step-by-step example</div><p>Can the prime 47 have the required form?</p><ol class="step-list"><li>Divide by 6: 47 = 6 × 7 + 5.</li><li>Rewrite the remainder 5 as −1 in a neighboring cycle: 47 = 6 × 8 − 1.</li><li>So 47 has the required form. This matches the theorem, but the form alone does not prove primality.</li></ol><span class="math">47 = 6(8) − 1 &nbsp; ✓</span>` },
+          { title: "Words to know", body: `<ul><li><strong>Factor / divisor:</strong> a whole number that divides another with no remainder.</li><li><strong>Prime:</strong> a number greater than 1 with exactly two positive factors.</li><li><strong>Composite:</strong> a number greater than 1 that has additional factors.</li><li><strong>Necessary condition:</strong> something that must be true. Here, 6q ± 1 is necessary for primes above 3, but not sufficient.</li></ul>` }
+        ]
+      },
+      {
+        id: "floor", icon: "⌊x⌋", tone: "amber", name: "The floor function", short: "Read floor notation correctly, reason with its defining inequalities, and test tempting rules.",
+        time: "6 min", formula: "⌊x⌋ ≤ x < ⌊x⌋ + 1", keywords: "floor function greatest integer floor notation inequality negative number true false properties",
+        intro: "The floor of a real number is the greatest integer that is less than or equal to it. It rounds down along the number line—not toward zero.",
+        sections: [
+          { title: "1. What the floor brackets mean", body: `<p>The floor symbol <strong>⌊x⌋</strong> means “the greatest integer less than or equal to x.” Its defining fact is:</p><span class="math">⌊x⌋ ≤ x &lt; ⌊x⌋ + 1</span><p>For example, ⌊3.1⌋ = 3 and ⌊2.5⌋ = 2. For a negative number, ⌊−1.2⌋ = −2, because −2 ≤ −1.2 &lt; −1. Do not confuse floor with rounding to the nearest integer or truncating toward zero.</p>` },
+          { title: "2. Prove a true floor identity", body: `<p>For every real x, the lecture's identity ⌊x − 1⌋ = ⌊x⌋ − 1 is true. Let n = ⌊x⌋. By definition, n ≤ x &lt; n + 1.</p><ol class="step-list"><li>Subtract 1 from all three parts of the inequality: n − 1 ≤ x − 1 &lt; n.</li><li>The greatest integer less than or equal to x − 1 is n − 1.</li><li>Since n = ⌊x⌋, this says ⌊x − 1⌋ = ⌊x⌋ − 1.</li></ol><p>This proof works for every real number, including negative values and integers.</p>` },
+          { title: "3. How to disprove an overconfident rule", body: `<p>One counterexample is enough to disprove a claim that says something is true for <strong>every</strong> real number. It does not have to work for many inputs—just one valid input where the two sides differ.</p><ul><li>Claim: ⌊x − y⌋ = ⌊x⌋ − ⌊y⌋ for all real x,y. Choose x=3.1, y=0.2. The left side is ⌊2.9⌋=2; the right side is 3−0=3. Not equal.</li><li>Claim: ⌊x²⌋ = ⌊x⌋² for all real x. Choose x=2.5. The left side is ⌊6.25⌋=6; the right side is 2²=4. Not equal.</li></ul><div class="plain-note"><strong>How to read the brackets:</strong> evaluate the expression inside first, then take its floor. For example, ⌊3.1 − 0.2⌋ = ⌊2.9⌋ = 2.</div>` },
+          { title: "Worked example · floor of half an even integer", body: `<div class="example-label">Step-by-step example</div><p>Show that if n is an even integer, then ⌊n/2⌋ = n/2.</p><ol class="step-list"><li>By definition, an even integer can be written n = 2k for some integer k.</li><li>Divide both sides by 2: n/2 = k.</li><li>Since k is already an integer, its floor is itself: ⌊k⌋ = k.</li><li>Replace k with n/2 to get ⌊n/2⌋ = n/2.</li></ol><span class="math">n = 2k ⟹ ⌊n/2⌋ = ⌊k⌋ = k = n/2</span>` },
+          { title: "Words to know", body: `<ul><li><strong>Real number:</strong> a number on the number line, including decimals and integers.</li><li><strong>Integer:</strong> a whole number, its negative, or zero.</li><li><strong>Counterexample:</strong> one example that proves a universal claim false.</li><li><strong>Universal claim:</strong> a statement that says something holds for every allowed input.</li></ul>` }
+        ]
+      },
+      {
+        id: "proofs", icon: "∴", tone: "pink", name: "Proof toolkit", short: "Choose a proof strategy, follow every logic step, and see how contradiction and contraposition work.",
+        time: "8 min", formula: "P ⇒ Q  ⇔  not Q ⇒ not P", keywords: "proof contradiction contraposition direct proof proof by cases irrational rational logic divisibility square root",
+        intro: "A proof is a sequence of reasons that guarantees a claim. The first step is to identify exactly what is assumed, what must be shown, and which proof method fits.",
+        sections: [
+          { title: "1. A direct proof starts with the assumption", body: `<p>To prove “if P, then Q” directly, assume P is true and use definitions and known facts until you reach Q.</p><div class="example-label">Lecture example · divisibility by 4</div><p>Show that n² − 2 is not divisible by 4 for any integer n. Any integer is either even, n=2k, or odd, n=2k+1. These are all the cases.</p><ol class="step-list"><li>If n=2k, then n²−2 = (2k)²−2 = 4k²−2 = 4(k²−1)+2. Remainder 2, not divisible by 4.</li><li>If n=2k+1, then n²−2 = (2k+1)²−2 = 4k²+4k−1 = 4(k²+k−1)+3. Remainder 3, not divisible by 4.</li><li>Both possible cases leave a nonzero remainder, so 4 never divides n²−2.</li></ol>` },
+          { title: "2. Proof by cases checks every possibility", body: `<p>A <strong>proof by cases</strong> splits the possibilities into categories and proves the claim in each one. The cases must cover every possible input, with no gaps.</p><p>For an integer, the even/odd split is complete: every integer is either even (2k) or odd (2k+1). For a statement about remainders after division by 6, the six cases are remainders 0 through 5.</p><p>Keep the algebra visible: replace the number with its even/odd form, expand if needed, then rearrange into a multiple of the divisor plus a remainder.</p>` },
+          { title: "3. Contradiction assumes the opposite", body: `<p>To prove a claim by <strong>contradiction</strong>, temporarily assume the claim is false. Use that assumption to derive something impossible. Then the original claim must be true.</p><div class="example-label">Lecture example · square root of an irrational number</div><p>For a nonnegative irrational real number x, suppose √x is rational. Then √x = a/b for integers a,b with b ≠ 0, so x = a²/b², a ratio of integers. That makes x rational, contradicting the fact that x is irrational.</p><span class="math">√x = a/b ⟹ x = a²/b² is rational<br>contradiction: x was irrational</span><p>Therefore √x is irrational. The nonnegative condition matters because the real square root is only defined here for x ≥ 0.</p>` },
+          { title: "4. Contraposition reverses and negates", body: `<p>The contrapositive of “if P, then Q” is “if not Q, then not P.” These two statements are logically equivalent: proving either one proves the other. Do not confuse the contrapositive with the converse (“if Q, then P”), which is not generally equivalent.</p><div class="example-label">Lecture example · divisibility</div><p>“If a does not divide bc, then a does not divide b.” Its contrapositive is “if a divides b, then a divides bc.”</p><ol class="step-list"><li>Assume a divides b. By definition, b = ka for some integer k.</li><li>Multiply both sides by c: bc = (kc)a.</li><li>Because k and c are integers, kc is an integer.</li><li>Thus bc is an integer multiple of a, so a divides bc. This proves the contrapositive and hence the original statement.</li></ol><span class="math">a | b ⟹ b = ka ⟹ bc = (kc)a ⟹ a | bc</span>` },
+          { title: "5. Irrational numbers and an impossibility proof", body: `<p>A <strong>rational</strong> number can be written as a/b for integers a,b with b ≠ 0. An <strong>irrational</strong> real number cannot be written as any such fraction. The lecture uses the known fact that √2 is irrational.</p><div class="example-label">Lecture example · disprove that 3√2 − 7 is rational</div><p>Assume for contradiction that 3√2−7=a/b for integers a,b with b≠0. Add 7 to both sides, then divide by 3:</p><span class="math">3√2 = a/b + 7 = (a + 7b)/b<br>√2 = (a + 7b)/(3b)</span><p>The last expression is a ratio of integers with a nonzero denominator, so it would make √2 rational. That contradicts the known irrationality of √2. Therefore 3√2−7 is irrational.</p>` },
+          { title: "A quick choice guide", body: `<ul><li><strong>Direct proof:</strong> the assumption naturally gives you a definition to use.</li><li><strong>Cases:</strong> a small number of exhaustive categories cover all possibilities (like even and odd).</li><li><strong>Contradiction:</strong> assuming the opposite creates a clear impossibility.</li><li><strong>Contraposition:</strong> the negated conclusion gives a simpler starting point.</li><li><strong>To disprove “for every”:</strong> find one valid counterexample instead of trying to prove a false statement.</li></ul>` }
+        ]
+      }
+    ];
+
+    const questions = [
+      { id: "q1", category: "lecture", label: "From the lecture", difficulty: "Warm-up", topic: "Remainders", prompt: "Today is Monday. What weekday will it be 30 days from today?", hint: "Divide 30 by 7 and use only the remainder.", answers: ["wednesday"], solution: ["A week has 7 days, so divide 30 by 7.", "30 = 7 × 4 + 2: there are 4 full weeks and 2 days left.", "Count 2 days after Monday: Tuesday, then Wednesday."] },
+      { id: "q2", category: "lecture", label: "From the lecture", difficulty: "Think it through", topic: "Prime numbers", prompt: "A prime p is greater than 3. Which form must it have: 6q, 6q+1, 6q+2, 6q+3, 6q+4, or 6q+5?", hint: "Cross out the forms that force divisibility by 2 or by 3.", answers: ["6q+1 or 6q+5", "6q ± 1", "6q+1, 6q-1", "6q+1 or 6q-1"], solution: ["Every integer leaves a remainder 0, 1, 2, 3, 4, or 5 when divided by 6.", "Remainders 0, 2, and 4 make the number even; remainder 3 makes it divisible by 3.", "A prime greater than 3 cannot be divisible by 2 or 3, so only 6q+1 or 6q+5 remain.", "Since 6q+5 = 6(q+1)−1, this is the same as 6q±1."] },
+      { id: "q3", category: "lecture", label: "From the lecture", difficulty: "Find the flaw", topic: "Floor function", prompt: "A classmate says ⌊x²⌋ = ⌊x⌋² for every real x. Give a counterexample by using x = 2.5. Enter the left side and the right side, like “6 and 4.”", hint: "Evaluate the square before applying the floor on the left.", answers: ["6 and 4", "6, 4", "6 vs 4", "left 6 right 4"], solution: ["Left side: x² = 2.5² = 6.25, so ⌊x²⌋ = 6.", "Right side: ⌊2.5⌋² = 2² = 4.", "Because 6 and 4 are different, x=2.5 disproves the claim."] },
+      { id: "q4", category: "lecture", label: "From the lecture", difficulty: "Proof practice", topic: "Proof toolkit", prompt: "Write an even integer n in the form 2k. What is ⌊n/2⌋ in terms of n?", hint: "Because k is an integer, what is ⌊k⌋?", answers: ["n/2", "k"], solution: ["An even integer has the form n=2k for some integer k.", "Divide by 2 to get n/2=k.", "The floor of an integer is itself, so ⌊n/2⌋=⌊k⌋=k=n/2."] },
+      { id: "q5", category: "lecture", label: "From the lecture", difficulty: "Proof practice", topic: "Proof toolkit", prompt: "For any integer n, what remainder does n² − 2 leave when divided by 4? Give both possibilities.", hint: "Write n as either 2k or 2k+1.", answers: ["2 or 3", "2 and 3", "remainders 2 and 3"], solution: ["If n=2k, then n²−2=4k²−2=4(k²−1)+2, remainder 2.", "If n=2k+1, then n²−2=4k²+4k−1=4(k²+k−1)+3, remainder 3.", "Both remainders are nonzero, so n²−2 is never divisible by 4."] },
+      { id: "q6", category: "lecture", label: "From the lecture", difficulty: "Logic check", topic: "Proof toolkit", prompt: "What is the contrapositive of: “If a does not divide bc, then a does not divide b”?", hint: "For “if P, then Q,” the contrapositive is “if not Q, then not P.”", answers: ["if a divides b, then a divides bc", "a|b implies a|bc", "if a|b then a|bc", "if a divides b then a divides bc"], solution: ["Let P be “a does not divide bc,” and Q be “a does not divide b.”", "The contrapositive is “not Q implies not P.”", "“Not Q” is a divides b, and “not P” is a divides bc. So: if a|b, then a|bc."] },
+      { id: "q7", category: "lecture", label: "From the lecture", difficulty: "Proof practice", topic: "Proof toolkit", prompt: "Complete the conclusion: Assuming 3√2 − 7 = a/b would make √2 equal to a ratio of integers, contradicting that √2 is ______.", hint: "A rational number is a ratio of integers.", answers: ["irrational"], solution: ["Add 7: 3√2 = a/b + 7 = (a+7b)/b.", "Divide by 3: √2 = (a+7b)/(3b), a ratio of integers.", "That would make √2 rational, contradicting the fact that it is irrational."] },
+      { id: "q8", category: "exam", label: "Exam-style", difficulty: "Medium", topic: "Remainders", prompt: "A course meets every 6 days. The first meeting is on a Thursday. What weekday is the 15th meeting?", hint: "The 1st meeting is the starting day; there are only 14 six-day jumps to meeting 15.", answers: ["thursday"], solution: ["From meeting 1 to meeting 15 there are 15−1=14 jumps.", "Each jump is 6 days, so the total shift is 14×6=84 days.", "84 = 7×12, so the shift is 0 days modulo 7. The 15th meeting is also Thursday."] },
+      { id: "q9", category: "exam", label: "Exam-style", difficulty: "Medium", topic: "Prime numbers", prompt: "A number greater than 3 is prime. It leaves remainder 5 when divided by 6. Rewrite it in the form 6q ± 1.", hint: "Remainder 5 is one less than the next multiple of 6.", answers: ["6q-1", "6q − 1", "6(q+1)-1", "6(q+1)−1", "one less than a multiple of 6"], solution: ["Remainder 5 means the number is 6q+5 for some integer q.", "Rewrite 6q+5 as 6(q+1)−1.", "It is therefore one less than a multiple of 6, which is the −1 case of 6q±1."] },
+      { id: "q10", category: "exam", label: "Exam-style", difficulty: "Challenge", topic: "Floor function", prompt: "Use the defining inequality for floors to prove ⌊x−1⌋ = ⌊x⌋−1. What three-part inequality do you get first if n=⌊x⌋?", hint: "Start with n ≤ x < n+1 and subtract 1 throughout.", answers: ["n-1 <= x-1 < n", "n − 1 ≤ x − 1 < n", "n-1 ≤ x-1 < n", "n−1≤x−1<n"], solution: ["Set n=⌊x⌋. By definition, n≤x<n+1.", "Subtract 1 from every part: n−1≤x−1<n.", "The greatest integer at most x−1 is n−1, so ⌊x−1⌋=n−1=⌊x⌋−1."] },
+      { id: "q11", category: "different", label: "A different application", difficulty: "Try it", topic: "Remainders", prompt: "A rotating display has 12 positions numbered 0 to 11. It starts at position 4 and turns forward 29 positions. Where does it stop?", hint: "The position is (starting position + turns) modulo 12.", answers: ["9", "position 9"], solution: ["Add the starting position and the 29 moves: 4+29=33.", "Divide 33 by 12: 33=12×2+9.", "The remainder is 9, so the display stops at position 9."] },
+      { id: "q12", category: "different", label: "A different application", difficulty: "Reason it out", topic: "Prime numbers", prompt: "A new number 121 is of the form 6q±1. Does that prove it is prime? Answer yes or no, and give a factorization.", hint: "Check whether 121 has a repeated factor.", answers: ["no, 11x11", "no, 11 x 11", "no, 11 × 11", "no 11x11", "no; 11 × 11", "no 11 × 11"], solution: ["121 = 6×20+1, so it does have the required form.", "But that form is only necessary for a prime greater than 3, not sufficient.", "121=11×11, so 121 is composite."] },
+      { id: "q13", category: "different", label: "A different application", difficulty: "Challenge", topic: "Proof toolkit", prompt: "Someone claims every integer n has n² leaving remainder 0 or 1 when divided by 4. Which proof strategy fits best, and what two cases should you check?", hint: "Every integer is either even or odd.", answers: ["proof by cases: even and odd", "cases even odd", "even and odd cases"], solution: ["Use a proof by cases, because every integer is either even or odd.", "For n=2k, n²=4k², remainder 0.", "For n=2k+1, n²=4k²+4k+1=4(k²+k)+1, remainder 1.", "The two cases cover every integer, proving the claim."] },
+      { id: "q14", category: "different", label: "A different application", difficulty: "Think carefully", topic: "Proof toolkit", prompt: "A transit display cycles through the letters A–E. Starting at A, it advances 17 places. Using A=0, B=1, C=2, D=3, E=4, which letter does it show?", hint: "There are 5 positions, and A is position 0.", answers: ["c", "letter c"], solution: ["The cycle length is 5, so reduce 17 modulo 5.", "17=5×3+2, so the display advances 2 positions from A.", "With A=0, B=1, C=2, it shows C."] }
+    ];
+
+    const pageNames = { home: "Overview", learn: "Lessons", practice: "Practice", tools: "Math tools" };
+    const pageTitles = {
+      home: "A clearer way to think about numbers",
+      learn: "Learn it, one idea at a time",
+      practice: "Practice makes the pattern stick",
+      tools: "Explore the math as you go"
+    };
+    const pageDescriptions = {
+      home: "Short lessons, careful steps, and fresh questions. Start with the idea that feels new; come back whenever you need a second look.",
+      learn: "Four short chapters cover every idea and proof pattern in the Lecture 14 review.",
+      practice: "Try a question first. Check your reasoning, then open the worked solution whenever you want.",
+      tools: "Interactive helpers make remainders, weekdays, the floor function, and prime forms easier to see."
+    };
+    const progressKey = "number-sense-lecture14-progress-v1";
+    const attemptKey = "number-sense-lecture14-answers-v1";
+    let completed = readStorage(progressKey, []);
+    let attempts = readStorage(attemptKey, []);
+    let activePage = "home";
+    let activeLesson = "remainders";
+    let activeFilter = "all";
+    let searchQuery = "";
+
+    let persistenceUnavailable = false;
+
+    function readStorage(key, fallback) {
+      try {
+        const value = JSON.parse(localStorage.getItem(key) || "null");
+        return Array.isArray(value) ? value : fallback;
+      } catch (error) {
+        persistenceUnavailable = true;
+        console.warn(`Could not read study progress from local storage (${key}).`, error);
+        return fallback;
+      }
+    }
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+    }
+
+    function saveProgress() {
+      try {
+        localStorage.setItem(progressKey, JSON.stringify(completed));
+        localStorage.setItem(attemptKey, JSON.stringify(attempts));
+      } catch (error) {
+        persistenceUnavailable = true;
+        console.warn("Could not save study progress in this browser.", error);
+      }
+    }
+
+    function updateProgress() {
+      const count = lessons.filter((lesson) => completed.includes(lesson.id)).length;
+      document.getElementById("progress-count").textContent = `${count} / ${lessons.length}`;
+      document.getElementById("progress-copy").textContent = persistenceUnavailable
+        ? "Progress may not be saved in this browser."
+        : count === lessons.length
+        ? "Every lesson complete. Nicely done!"
+        : count === 0 ? "A little practice goes a long way." : `${lessons.length - count} ${lessons.length - count === 1 ? "lesson" : "lessons"} left to explore.`;
+      document.getElementById("progress-fill").style.width = `${count / lessons.length * 100}%`;
+      const progressBar = document.getElementById("progress-bar");
+      progressBar.setAttribute("aria-valuenow", count);
+      document.querySelectorAll("[data-lesson]").forEach((button) => {
+        const isDone = completed.includes(button.dataset.lesson);
+        button.classList.toggle("done", isDone);
+      });
+    }
+
+    function header(title, description, kicker) {
+      return `<div class="section-head"><div><div class="section-kicker">${kicker}</div><h2>${title}</h2><p>${description}</p></div></div>`;
+    }
+
+    function hero() {
+      return `<section class="hero" aria-labelledby="welcome-title">
+        <div class="hero-copy"><div class="hero-kicker">Your study guide · Lecture 14</div>
+          <h1 id="welcome-title">${pageTitles[activePage]}</h1>
+          <p>${pageDescriptions[activePage]}</p>
+          <button class="hero-cta" data-go="${activePage === "home" ? "learn" : "practice"}">${activePage === "home" ? "Start learning" : "Go to practice"} <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="hero-graphic" aria-hidden="true"><div class="orbit"><div class="orbit-inner">n / 7</div></div></div>
+      </section>`;
+    }
+
+    function lessonCard(lesson) {
+      const done = completed.includes(lesson.id);
+      return `<a class="concept-card ${done ? "done" : ""}" href="#lesson-${lesson.id}" data-lesson="${lesson.id}" aria-label="Open lesson: ${escapeHTML(lesson.name)}${done ? ", completed" : ""}">
+        <span class="concept-icon tone-${lesson.tone}" aria-hidden="true">${lesson.icon}</span>
+        <h3>${escapeHTML(lesson.name)}</h3><p>${escapeHTML(lesson.short)}</p>
+        <span class="card-meta"><span>${done ? "Completed" : lesson.time}</span><strong>${done ? "Review lesson →" : "Open lesson →"}</strong></span>
+      </a>`;
+    }
+
+    function renderHome() {
+      return `${hero()}${header("Four ideas, one clear path", "Everything from the review, explained from the ground up.", "Your lessons")}
+        <section class="concept-grid" aria-label="Lecture lessons">${lessons.map(lessonCard).join("")}</section>
+        <aside class="callout"><span class="callout-icon" aria-hidden="true">💡</span><p><strong>A note about the prime-number shortcut:</strong> Every prime greater than 3 is 6q ± 1, but not every number of that form is prime. The lesson shows why—and gives examples that make the difference stick.</p></aside>
+        ${header("Put your understanding to work", "Exam-style questions, real-world cycles, and complete step-by-step solutions.", "Then make it yours")}
+        <div class="concept-grid">
+          <a class="concept-card" href="#practice" data-go="practice"><span class="concept-icon tone-pink" aria-hidden="true">✎</span><h3>Try a practice set</h3><p>Use questions based on the lecture, professor-style prompts, and different real-world situations.</p><span class="card-meta"><span>${questions.length} questions</span><strong>Practice now →</strong></span></a>
+          <a class="concept-card" href="#tools" data-go="tools"><span class="concept-icon tone-green" aria-hidden="true">⌘</span><h3>Play with the math tools</h3><p>Change the inputs and see the remainder, weekday, floor, or prime-form test update instantly.</p><span class="card-meta"><span>4 interactive helpers</span><strong>Explore tools →</strong></span></a>
+        </div>`;
+    }
+
+    function renderLearn() {
+      const filtered = lessons.filter((lesson) => `${lesson.name} ${lesson.short} ${lesson.keywords}`.toLowerCase().includes(searchQuery));
+      return `${hero()}${header("Choose your next idea", "Every lesson includes definitions, a worked example, and the reasoning behind each step.", "Course map")}
+        ${filtered.length
+          ? `<section class="concept-grid" aria-label="Lecture lessons">${filtered.map(lessonCard).join("")}</section>`
+          : `<div class="empty-state">No lesson matches “${escapeHTML(searchQuery)}”. Try another word.</div>`}
+        <aside class="callout"><span class="callout-icon" aria-hidden="true">🧭</span><p><strong>Suggested route:</strong> Start with remainders, then prime numbers and the floor function, and finish with proof strategies. Each idea builds on definitions from the previous lesson.</p></aside>`;
+    }
+
+    function renderLesson(id) {
+      const lesson = lessons.find((item) => item.id === id) || lessons[0];
+      activeLesson = lesson.id;
+      const sections = lesson.sections.filter((section) => `${section.title} ${section.body} ${lesson.keywords}`.toLowerCase().includes(searchQuery));
+      const done = completed.includes(lesson.id);
+      return `<div class="lesson-layout">
+        <article class="lesson-article">
+          <div class="section-kicker">Lecture 14 · Quiz 6</div><h1 class="lesson-title">${lesson.icon} &nbsp;${escapeHTML(lesson.name)}</h1>
+          <p class="lesson-intro">${escapeHTML(lesson.intro)}</p>
+          ${sections.length
+            ? sections.map((section) => `<section class="lesson-block"><h2>${section.title}</h2>${section.body}</section>`).join("")
+            : `<div class="empty-state">No lesson section matches “${escapeHTML(searchQuery)}”. Try another word.</div>`}
+          <div class="lesson-block">
+            <h2>Check what you know</h2><p>Test this idea with a fresh question. Your answer does not have to be perfect—use it to find the step worth revisiting.</p>
+            <button class="primary-button" data-go="practice" data-filter="all">Go to practice →</button>
+            <button class="secondary-button" data-mark="${lesson.id}" ${done ? "disabled" : ""}>${done ? "Lesson complete ✓" : "Mark lesson complete"}</button>
+          </div>
+          <div class="lesson-block"><h2>Go to another idea</h2><div class="practice-toolbar">${lessons.filter((item) => item.id !== lesson.id).map((item) => `<button class="filter-chip" data-lesson="${item.id}">${item.icon} ${escapeHTML(item.name)}</button>`).join("")}</div></div>
+        </article>
+        <aside class="lesson-aside" aria-label="Lesson summary">
+          <div class="aside-card"><h3>The key idea</h3><div class="aside-formula">${lesson.formula}</div></div>
+          <div class="aside-card"><h3>In this lesson</h3><p>${lesson.sections.length} short sections · about ${lesson.time}</p><p style="margin-top:8px">${done ? "Marked complete ✓" : "Take it at your own pace."}</p></div>
+          <div class="aside-card"><h3>Study tip</h3><p>Say the reason for each line out loud. If you can explain why a step is allowed, you understand it.</p></div>
+        </aside>
+      </div>`;
+    }
+
+    function visibleQuestions() {
+      return questions.filter((question) => {
+        const categoryMatches = activeFilter === "all" || question.category === activeFilter;
+        const searchMatches = `${question.prompt} ${question.hint} ${question.topic} ${question.label} ${question.difficulty}`.toLowerCase().includes(searchQuery);
+        return categoryMatches && searchMatches;
+      });
+    }
+
+    function renderQuestion(question) {
+      const answeredCorrectly = attempts.includes(question.id);
+      return `<article class="question-card" data-question="${question.id}">
+        <div class="question-top"><span class="question-type">${escapeHTML(question.label)} · ${escapeHTML(question.topic)}</span><span class="question-difficulty">${escapeHTML(question.difficulty)}</span></div>
+        <h3>${escapeHTML(question.prompt)}</h3><p class="question-hint">${escapeHTML(question.hint)}</p>
+        <div class="answer-row"><label class="sr-only" for="answer-${question.id}">Your answer</label><input id="answer-${question.id}" type="text" autocomplete="off" placeholder="Type your answer..." data-answer="${question.id}"><button type="button" class="primary-button" data-check="${question.id}">Check answer</button><button type="button" class="secondary-button" data-reveal="${question.id}">Show steps</button></div>
+        <p class="answer-feedback ${answeredCorrectly ? "correct" : ""}" role="status" aria-live="polite">${answeredCorrectly ? "✓ You solved this one correctly before. Try it again, or review the steps." : ""}</p>
+        <div class="solution" data-solution="${question.id}" hidden><h4>Worked solution</h4><ol>${question.solution.map((step) => `<li>${escapeHTML(step)}</li>`).join("")}</ol></div>
+      </article>`;
+    }
+
+    function renderPractice() {
+      const filters = [["all", "All questions"], ["lecture", "From the lecture"], ["exam", "Exam-style"], ["different", "Different applications"]];
+      const visible = visibleQuestions();
+      const solved = questions.filter((question) => attempts.includes(question.id)).length;
+      return `${hero()}${header("Practice the thinking, not just the answer", `${solved} of ${questions.length} questions checked correctly. Try each one before opening the steps.`, "Your practice set")}
+        <div class="practice-toolbar" role="group" aria-label="Filter practice questions">${filters.map(([id, label]) => `<button class="filter-chip" type="button" data-filter="${id}" aria-pressed="${activeFilter === id}">${label}</button>`).join("")}</div>
+        <section aria-label="Practice questions">${visible.length ? visible.map(renderQuestion).join("") : `<div class="empty-state">No questions match those filters. Try another category or search.</div>`}</section>
+        <aside class="callout"><span class="callout-icon" aria-hidden="true">🧠</span><p><strong>Learning tip:</strong> Before you check an answer, name the definition or strategy you plan to use. Even a wrong first attempt is useful if you can explain why you tried it.</p></aside>`;
+    }
+
+    function renderTools() {
+      return `${hero()}${header("Make the ideas visible", "Try your own numbers. The explanation follows each answer so you can see why it works.", "Interactive math tools")}
+        <section class="tool-grid" aria-label="Interactive math tools">
+          <form class="tool-card" id="weekday-form"><h2>📅 &nbsp;Weekday calculator</h2><p>Move forward through the 7-day cycle using a remainder.</p>
+            <div class="tool-form"><label>Starting day<select name="day"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></label><label>Days ahead<input name="days" type="number" step="1" value="30" required></label></div>
+            <button class="primary-button" type="submit" style="margin-top:10px">Find the weekday</button><div class="tool-result" id="weekday-result" role="status" aria-live="polite"></div>
+          </form>
+          <form class="tool-card" id="remainder-form"><h2>↻ &nbsp;Remainder explorer</h2><p>See how a number breaks into whole cycles and what is left.</p>
+            <div class="tool-form"><label>Number a<input name="number" type="number" step="1" value="83" required></label><label>Cycle size b<input name="divisor" type="number" step="1" min="1" value="7" required></label></div>
+            <button class="primary-button" type="submit" style="margin-top:10px">Find the remainder</button><div class="tool-result" id="remainder-result" role="status" aria-live="polite"></div>
+          </form>
+          <form class="tool-card" id="floor-form"><h2>⌊x⌋ &nbsp;Floor explorer</h2><p>Find the greatest integer that is less than or equal to your number.</p>
+            <div class="tool-form"><label>Your real number x<input name="number" type="number" step="any" value="-1.2" required></label></div>
+            <button class="primary-button" type="submit" style="margin-top:10px">Find the floor</button><div class="tool-result" id="floor-result" role="status" aria-live="polite"></div>
+          </form>
+          <form class="tool-card" id="prime-form"><h2>✦ &nbsp;Prime-form check</h2><p>Check whether a number greater than 3 has the necessary form 6q ± 1.</p>
+            <div class="tool-form"><label>Whole number n<input name="number" type="number" step="1" min="4" value="47" required></label></div>
+            <button class="primary-button" type="submit" style="margin-top:10px">Check the remainder</button><div class="tool-result" id="prime-result" role="status" aria-live="polite"></div>
+          </form>
+        </section>
+        <aside class="callout"><span class="callout-icon" aria-hidden="true">⚠️</span><p><strong>Remember:</strong> A matching 6q ± 1 remainder is only a required condition for primes greater than 3. It cannot by itself establish that a number is prime.</p></aside>`;
+    }
+
+    function render() {
+      const content = document.getElementById("content");
+      if (activePage === "lesson") {
+        content.innerHTML = renderLesson(activeLesson);
+      } else if (activePage === "home") {
+        content.innerHTML = renderHome();
+      } else if (activePage === "learn") {
+        content.innerHTML = renderLearn();
+      } else if (activePage === "practice") {
+        content.innerHTML = renderPractice();
+      } else {
+        content.innerHTML = renderTools();
+      }
+      document.getElementById("breadcrumb").textContent = activePage === "lesson"
+        ? lessons.find((lesson) => lesson.id === activeLesson).name : pageNames[activePage];
+      document.querySelectorAll("[data-page]").forEach((button) => {
+        if (button.matches("button")) {
+          if (button.dataset.page === activePage) button.setAttribute("aria-current", "page");
+          else button.removeAttribute("aria-current");
+        }
+      });
+      document.getElementById("site-search").value = searchQuery;
+      updateProgress();
+    }
+
+    function visitPage(page) {
+      activePage = page;
+      searchQuery = "";
+      render();
+      document.getElementById("content").focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.addEventListener("click", (event) => {
+      const pageLink = event.target.closest("[data-page], [data-go]");
+      if (pageLink) {
+        event.preventDefault();
+        visitPage(pageLink.dataset.page || pageLink.dataset.go);
+        return;
+      }
+
+      const lessonLink = event.target.closest("[data-lesson]");
+      if (lessonLink) {
+        event.preventDefault();
+        activePage = "lesson";
+        activeLesson = lessonLink.dataset.lesson;
+        searchQuery = "";
+        render();
+        document.getElementById("content").focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      const filterButton = event.target.closest("[data-filter]");
+      if (filterButton) {
+        activeFilter = filterButton.dataset.filter;
+        render();
+        return;
+      }
+
+      const markButton = event.target.closest("[data-mark]");
+      if (markButton) {
+        if (!completed.includes(markButton.dataset.mark)) completed.push(markButton.dataset.mark);
+        saveProgress();
+        render();
+        return;
+      }
+
+      const checkButton = event.target.closest("[data-check]");
+      if (checkButton) {
+        const id = checkButton.dataset.check;
+        const question = questions.find((item) => item.id === id);
+        const input = document.getElementById(`answer-${id}`);
+        const normalized = input.value.toLowerCase().trim().replace(/\s+/g, " ").replace(/[−–]/g, "-");
+        const correct = question.answers.some((answer) => answer.toLowerCase().replace(/\s+/g, " ").replace(/[−–]/g, "-") === normalized);
+        const card = checkButton.closest(".question-card");
+        const feedback = card.querySelector(".answer-feedback");
+        if (!normalized) {
+          feedback.className = "answer-feedback try-again";
+          feedback.textContent = "Take a try first. A number, expression, or short explanation is fine.";
+          input.focus();
+        } else if (correct) {
+          if (!attempts.includes(id)) attempts.push(id);
+          saveProgress();
+          feedback.className = "answer-feedback correct";
+          feedback.textContent = "✓ That's right. You have the key idea. Open the steps to see why it works.";
+        } else {
+          feedback.className = "answer-feedback try-again";
+          feedback.textContent = "Not quite yet. Recheck the definition and the order of your steps, or open the worked solution.";
+        }
+        return;
+      }
+
+      const revealButton = event.target.closest("[data-reveal]");
+      if (revealButton) {
+        const solution = document.querySelector(`[data-solution="${revealButton.dataset.reveal}"]`);
+        solution.hidden = !solution.hidden;
+        revealButton.textContent = solution.hidden ? "Show steps" : "Hide steps";
+      }
+    });
+
+    document.getElementById("site-search").addEventListener("input", (event) => {
+      searchQuery = event.target.value.toLowerCase().trim();
+      if (activePage === "home") activePage = "learn";
+      render();
+      const search = document.getElementById("site-search");
+      search.focus();
+      search.setSelectionRange(search.value.length, search.value.length);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && event.target.matches("[data-answer]")) {
+        event.preventDefault();
+        document.querySelector(`[data-check="${event.target.dataset.answer}"]`).click();
+      }
+    });
+
+    document.getElementById("content").addEventListener("submit", (event) => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement)) return;
+      event.preventDefault();
+      const values = new FormData(form);
+      if (form.id === "weekday-form") {
+        const days = Number(values.get("days"));
+        const names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        const start = names.indexOf(values.get("day"));
+        if (!Number.isSafeInteger(days) || !Number.isSafeInteger(start)) {
+          document.getElementById("weekday-result").textContent = "Enter a whole number of days.";
+          return;
+        }
+        const offset = ((days % 7) + 7) % 7;
+        const end = names[(start + offset) % 7];
+        document.getElementById("weekday-result").innerHTML = `<strong>${end}</strong> · ${days} = 7 × ${Math.floor(days / 7)} + ${((days % 7) + 7) % 7}, so the remainder is ${offset}. Move ${offset} day${offset === 1 ? "" : "s"} from ${escapeHTML(values.get("day"))}.`;
+      } else if (form.id === "remainder-form") {
+        const number = Number(values.get("number"));
+        const divisor = Number(values.get("divisor"));
+        if (!Number.isSafeInteger(number) || !Number.isSafeInteger(divisor) || divisor <= 0) {
+          document.getElementById("remainder-result").textContent = "Use whole numbers, with a cycle size greater than zero.";
+          return;
+        }
+        const quotient = Math.floor(number / divisor);
+        const remainder = number - quotient * divisor;
+        document.getElementById("remainder-result").innerHTML = `<strong>Remainder ${remainder}.</strong> ${number} = ${divisor} × ${quotient} + ${remainder}. The cycle repeats ${quotient} whole time${quotient === 1 ? "" : "s"}, with ${remainder} left over.`;
+      } else if (form.id === "floor-form") {
+        const number = Number(values.get("number"));
+        const floor = Math.floor(number);
+        document.getElementById("floor-result").innerHTML = `<strong>⌊${escapeHTML(number)}⌋ = ${floor}.</strong> ${floor} ≤ ${escapeHTML(number)} &lt; ${floor + 1}. ${number < 0 && !Number.isInteger(number) ? "It rounds toward the smaller integer—not toward zero." : "This is the greatest integer no larger than your input."}`;
+      } else if (form.id === "prime-form") {
+        const number = Number(values.get("number"));
+        if (!Number.isSafeInteger(number) || number <= 3) {
+          document.getElementById("prime-result").textContent = "Enter a whole number greater than 3.";
+          return;
+        }
+        const remainder = number % 6;
+        const candidate = remainder === 1 || remainder === 5;
+        document.getElementById("prime-result").innerHTML = `<strong>${number} mod 6 = ${remainder}.</strong> ${candidate ? "It has the necessary 6q ± 1 form for a prime greater than 3." : "It is not of the form 6q ± 1, so it cannot be prime."} ${candidate ? "This condition alone does not prove it is prime." : ""}`;
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
